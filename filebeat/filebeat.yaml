@@ -1,0 +1,17 @@
+daemonset:
+  filebeatConfig:
+    filebeat.yml: |
+      filebeat.autodiscover:
+        providers:
+          - type: kubernetes
+            templates:
+              - condition:
+                  equals:
+                    kubernetes.namespace: kube-system
+                config:
+                  - type: container
+                    paths:
+                      - /var/log/containers/*-${data.kubernetes.container.id}.log
+                    exclude_lines: ["^\\s+[\\-`('.|_]"] 
+      output.logstash:
+        hosts: ["logtash-7-17-1-logstash:5044"]
