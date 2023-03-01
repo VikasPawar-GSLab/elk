@@ -3,13 +3,12 @@ kind: Service
 metadata:
   labels:
     app: kibana
-    spektra.diamanti.io/app: kibana-6yjzjk-inqcaqwv
   name: kibana-svc
   annotations:
    service.beta.kubernetes.io/aws-load-balancer-type: "external" 
    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance" 
    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"  
-  namespace: {replace-with-namespace}
+  namespace: {replace-your-with-namespace}
 spec:
   ports:
   - port: 5601

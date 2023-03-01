@@ -15,7 +15,7 @@ logstashPipeline:
     }
     output {
       elasticsearch {
-        hosts => "http://elasticsearch-master.{Replace-with-namespace}.svc.cluster.local:9200"
+        hosts => "http://elasticsearch-master.{Replace-your-with-namespace}.svc.cluster.local:9200"
         manage_template => false
         ecs_compatibility => disabled
         index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"

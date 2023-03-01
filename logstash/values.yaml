@@ -28,7 +28,7 @@ logstashPipeline:
     }
     output {
       elasticsearch {
-        hosts => "http://elasticsearch-master.spektra-t1-project-gslabproject.svc.cluster.local:9200"
+        hosts => "http://elasticsearch-master.{namespace}.svc.cluster.local:9200"
         manage_template => false
         index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
         document_type => "%{[@metadata][type]}"
@@ -110,6 +110,7 @@ resources:
 
 volumeClaimTemplate:
   accessModes: ["ReadWriteOnce"]
+  ##Mention your storageClassName
   storageClassName: "best-effort"
   resources:
     requests:
